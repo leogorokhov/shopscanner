@@ -70,21 +70,6 @@ final class AppViewModel: ObservableObject {
         default: break
         }
     }
-    
-    func increaseQuantity(cartItem: Cart) {
-        if let index = dataManager.cartItems.firstIndex(where: { $0.id == cartItem.id }) {
-            dataManager.cartItems[index].quantity += 1
-        }
-        // Обновите общую стоимость здесь, если необходимо
-    }
-
-    func decreaseQuantity(cartItem: Cart) {
-        if let index = dataManager.cartItems.firstIndex(where: { $0.id == cartItem.id }) {
-            dataManager.cartItems[index].quantity -= 1
-        }
-        // Обновите общую стоимость здесь, если необходимо
-    }
-
 
     func fetchLastScanned() {
         guard

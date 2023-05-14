@@ -1,10 +1,3 @@
-//
-//  ViewModel.swift
-//  DatabaseLoginTest
-//
-//  Created by Leonid on 19.02.2023.
-//
-
 import SwiftUI
 
 struct ViewModel: View {

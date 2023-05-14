@@ -1,10 +1,3 @@
-//
-//  DataManager.swift
-//  DatabaseLoginTest
-//
-//  Created by Leonid on 15.02.2023.
-//
-
 import SwiftUI
 import Firebase
 
@@ -61,16 +54,18 @@ public class DataManager: ObservableObject {
     }
     
     func addToCart(scan: Scan) {
-        let item = Cart(id: scan.id, price: scan.price, information: scan.information, cbzh: scan.cbzh, energyprice: scan.energyprice, extraqr: scan.extraqr, extraqrcode: scan.extraqrcode, quantity: 1)
+        let item = Cart(id: scan.id, price: scan.price, information: scan.information, cbzh: scan.cbzh, energyprice: scan.energyprice, extraqr: scan.extraqr, extraqrcode: scan.extraqrcode)
         self.cartItems.append(item)
         totalprice += Double(item.price) ?? 0.0
         print("total price: \(totalprice)")
     }
-    
+
+
     func deleteFromCart(cartItem: Cart) {
         if let index = self.cartItems.firstIndex(of: cartItem) {
-            totalprice -= Double(cartItem.price) ?? 0.0 * Double(cartItem.quantity)
+            totalprice -= Double(cartItem.price) ?? 0.0
             self.cartItems.remove(at: index)
         }
     }
+    
 }

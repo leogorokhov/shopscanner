@@ -1,10 +1,3 @@
-//
-//  DataScannerView.swift
-//  ShopScanner
-//
-//  Created by Leonid on 02.02.2023.
-//
-
 import Foundation
 import SwiftUI
 import VisionKit

@@ -1,11 +1,3 @@
-//
-//  ContentView.swift
-//  ShopScanner
-//
-//  Created by Leonid on 02.02.2023.
-//
-
-
 import SwiftUI
 import VisionKit
 import AVFoundation
@@ -37,6 +29,7 @@ struct ContentViewScanner: View {
         return uiimage.pngData()!
     }
     
+   
     func toggleTorch() {
         do {
             try captureDevice?.lockForConfiguration()
@@ -250,8 +243,7 @@ struct ContentViewScanner: View {
     }
     
     private var cartItemView: some View {
-        ForEach(vm.dataManager.cartItems.indices, id: \.self) { index in
-            let cartItem = vm.dataManager.cartItems[index]
+        ForEach(vm.dataManager.cartItems, id: \.index) { cartItem in
             ZStack {
                 VStack {
                     HStack {
@@ -284,29 +276,7 @@ struct ContentViewScanner: View {
                             .font(.title)
                     }.padding(.trailing)
                         .padding(.bottom)
-                    Stepper("Количество: \(cartItem.quantity)", value: $vm.dataManager.cartItems[index].quantity)
-                    HStack {
-                        Button(action: {
-                            vm.dataManager.decreaseQuantity(cartItem: cartItem)
-                        }) {
-                            Image(systemName: "minus")
-                                .font(.system(size: 25))
-                                .foregroundColor(.gray)
-                        }
-                        .disabled(cartItem.quantity <= 1)
 
-                        Text("\(cartItem.quantity)")
-                            .font(.system(size: 25))
-                            .padding(.horizontal)
-
-                        Button(action: {
-                            vm.dataManager.increaseQuantity(cartItem: cartItem)
-                        }) {
-                            Image(systemName: "plus")
-                                .font(.system(size: 25))
-                                .foregroundColor(.gray)
-                        }
-                    }
                 }
                 .padding(.all)
                 .background(Color(UIColor.systemGray5), in: RoundedRectangle(cornerRadius: 30))
